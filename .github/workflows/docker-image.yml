@@ -94,8 +94,8 @@ jobs:
           file: ./api/Dockerfile
           push: true
           tags: |
-            adijaiswal/backend:latest
-            adijaiswal/backend:${{ env.IMAGE_TAG }}
+            jyothsnav/backend:latest
+            jyothsnav/backend:${{ env.IMAGE_TAG }}
 
 
   build_frontend_docker_image_and_push:
