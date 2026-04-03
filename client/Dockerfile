@@ -1,9 +1,15 @@
 # Stage 1: Build React App
-FROM node:18-alpine AS build
+FROM node:20-alpine AS build
 
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm config set registry https://registry.npmjs.org/ \
+ && npm config set fetch-retries 5 \
+ && npm config set fetch-retry-factor 2 \
+ && npm config set fetch-timeout 600000 \
+ && npm cache clean --force \
+ && npm ci
+ 
 COPY . .
 
 # Optional: pass REACT_APP_API as build arg
