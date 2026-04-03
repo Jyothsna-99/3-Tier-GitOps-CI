@@ -59,16 +59,15 @@ jobs:
         run: |
             curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.69.3
 
-      - name: Run Trivy vulnerability scanner (FS)
-        uses: aquasecurity/trivy-action@v0.30.0 # this is to setup trivy 
-        with:
-          scan-type: fs
-          scan-ref: .  #current directory 
-          format: table
-          ignore-unfixed: true
-          vuln-type: os,library
-          severity: CRITICAL,HIGH
-          
+      - name: Run Trivy FS scan  # Pure CLI, no action
+        run: |
+           trivy fs . \
+             --format table \
+             --ignore-unfixed \
+             --vuln-type os,library \
+             --severity CRITICAL,HIGH \
+             --exit-code 1
+             
   build_backend_docker_image_and_push:
     runs-on: ubuntu-latest
     needs: trivy_fs_scan
