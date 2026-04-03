@@ -57,7 +57,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Trivy vulnerability scanner (FS)
-        uses: aquasecurity/trivy-action@v0.32.0 # this is to setup trivy 
+        uses: aquasecurity/trivy-action@v0.30.0 # this is to setup trivy 
         with:
           scan-type: fs
           scan-ref: .  #current directory 
