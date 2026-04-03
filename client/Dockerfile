@@ -8,7 +8,7 @@ RUN npm config set registry https://registry.npmjs.org/ \
  && npm config set fetch-retry-factor 2 \
  && npm config set fetch-timeout 600000 \
  && npm cache clean --force \
- && npm ci
+ && npm install --omit=dev
  
 COPY . .
 
