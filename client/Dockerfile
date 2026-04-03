@@ -12,6 +12,7 @@ RUN npm config set registry https://registry.npmjs.org/ \
  
 COPY . .
 
+
 # Optional: pass REACT_APP_API as build arg
 ARG REACT_APP_API
 ENV REACT_APP_API=$REACT_APP_API
