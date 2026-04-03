@@ -55,6 +55,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Install Trivy  # New
+        run: |
+            curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.69.3
 
       - name: Run Trivy vulnerability scanner (FS)
         uses: aquasecurity/trivy-action@v0.30.0 # this is to setup trivy 
